@@ -27,4 +27,4 @@ bash run_everything.sh
 
 If you use this code, please cite the paper:
 
-**FREITAS, V. L. S.; FEITOSA, J.; SEPETAUSKAS, C. S. N.; SANTOS, L. B. L. (2020). Robustness analysis in an inter-cities mobility network: modeling municipal, state and federal initiatives as failures and attacks.** 
+**FREITAS, V. L. S.; FEITOSA, J.; SEPETAUSKAS, C. S. N.; SANTOS, L. B. L. (2020). Robustness analysis in an inter-cities mobility network: modeling municipal, state and federal initiatives as failures and attacks. Available at: https://arxiv.org/abs/2004.02648** 
