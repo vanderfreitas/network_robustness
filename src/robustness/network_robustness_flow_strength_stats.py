@@ -60,6 +60,7 @@ avg = data[0]
 std = data[1]
 
 
+
 stats = ['degree', 'vuln']
 
 
@@ -93,10 +94,7 @@ for thresh in [0, avg, avg+std]:
 		number_removed[i] = i / float(N)
 
 
-
-
 	# Find larger component
-	#g = g_original.copy()
 	cl = g_original.components()
 
 	cl_flows = np.zeros(len(cl))
@@ -104,12 +102,12 @@ for thresh in [0, avg, avg+std]:
 	# each component
 	for i in range(len(cl)):
 		cl_flows[i] = total_flow(g_original.vs[cl[i]]['label'], f_matrix)
-		#if(thresh == avg):
-		#	print(cl[i],cl_flows[i])
 
 	P_infty_baseline = max(cl_flows)
 
 	for stat in stats:
+		f_matrix_copy = f_matrix.copy()
+
 
 		st_data = np.genfromtxt(relative_path_in + stat + '_' + str(thresh) + '.csv', delimiter=';')
 
@@ -134,14 +132,14 @@ for thresh in [0, avg, avg+std]:
 
 		count = 1
 		while(g.vcount() > 1):
+
+
 			index = g.vs.find(label=stat_array[count-1][0]).index
-
 			# Remove the element from the flow matrix as well
-			ind_in_the_original_matrix = int(stat_array[count-1][1])
-			f_matrix[ind_in_the_original_matrix,:] = 0;
-			f_matrix[:,ind_in_the_original_matrix] = 0;
+			ind_in_the_original_matrix = np.where(codes == g.vs[index]['label'])[0][0]
+			f_matrix_copy[ind_in_the_original_matrix,:] = 0;
+			f_matrix_copy[:,ind_in_the_original_matrix] = 0;
 
-			#print "index: ", index
 			g.delete_vertices(index)
 
 			cl = g.components()
@@ -149,12 +147,12 @@ for thresh in [0, avg, avg+std]:
 			cl_flows = np.zeros(len(cl))
 			# each component
 			for i in range(len(cl)):
-				cl_flows[i] = total_flow(g.vs[cl[i]]['label'], f_matrix)
+				cl_flows[i] = total_flow(g.vs[cl[i]]['label'], f_matrix_copy)
 
 			P_infty[count] = float(max(cl_flows)) / P_infty_baseline 
 			count = count + 1
 		#######################################################
-		
+
 		# Save data to disk
 		file = open(relative_path + 'robustness_flow_strength_attack_' + stat + '_' + str(thresh) + '.csv', 'w')
 		for i in range(N):
@@ -166,6 +164,5 @@ for thresh in [0, avg, avg+std]:
 		V = 0.5 - R
 
 		file_out = open(relative_path + 'robustness_flow_strength_attack_' + stat + '_R_V_' + str(thresh) + '.csv', 'w')
-		#print(str(thresh) + ';' + str(R)  + ';' + str(V) )
 		file_out.write(str(thresh) + ';' + str(R)  + ';' + str(V) + '\n')
 		file_out.close()
