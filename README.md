@@ -7,11 +7,6 @@ Dependencies (tested on Python 3.6.10 :: Anaconda, Inc.):
 * numpy
 
 
-To :
-```
-bash generate_networks.sh
-```
-
 To generate the three networks from the raw data and run all the simulations for each network:
 - Set the network in the file: *simulations_input.txt* and run
 ```
