@@ -2,17 +2,9 @@ STATE
 input_data/states_network.csv
 input_data/states_network_codes.csv
 
-
-FILE_INPUT:
-# 1) Project name
-# 2) network
-# 3) nodes' IDs
-
-
 BR
 input_data/BR_network.csv
 input_data/BR_network_codes.csv
-
 
 SP
 input_data/35_state_network.csv
@@ -20,9 +12,7 @@ input_data/35_state_network_codes.csv
 
 
 
-
-
-
-
-
-
+FILE_INPUT:
+# 1) Project name
+# 2) network
+# 3) nodes' IDs

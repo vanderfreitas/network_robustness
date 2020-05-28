@@ -7,6 +7,9 @@ import matplotlib.pyplot as plt
 import matplotlib
 
 
+from robustness import *
+
+
 
 ########### LOADING INPUT FILES ##############
 import sys
@@ -55,53 +58,20 @@ for thresh in [0, avg, avg+std]:
 	g_original.vs['label'] = codes  # or a.index/a.columns
 
 	
-	# random failures
-	P_infty = np.zeros(N)
 
-	number_removed = np.zeros(N)
-	for i in range(g_original.vcount()):
-		number_removed[i] = i / float(N)
+	# robustness
+	number_removed,P_infty = robustness_failure_node(g_original, simulations=100)
 
-	# Runs it 10 times
-	simulations = 100
-
-	P_infty_baseline = 0.0
-	for sim in range(simulations):
-
-		# Compute the network robustness to random failures ##
-
-		# Make a copy of the network
-		g = g_original.copy()
-
-		# Find larger component
-		cl = g.components()
-		P_infty_baseline = float(max(cl.sizes()))
-
-		P_infty[0] += 1.0
-
-		count = 1
-		while(g.vcount() > 1):
-			index = int(random.random() * g.vcount())
-			g.delete_vertices(index)
-
-			cl = g.components()
-			P_infty[count] += float(max(cl.sizes())) / P_infty_baseline 
-			
-			count = count + 1
-		#######################################################
-
-	# Compute the average
-	P_infty = P_infty / float(simulations)
 
 	# Save data to disk
 	file = open(relative_path + 'robustness_failure_' + str(thresh) + '.csv', 'w')
-	for i in range(N):
+	for i in range(len(number_removed)):
 		file.write(str(number_removed[i]) + '\t' + str(P_infty[i]) + '\n')
 	file.close()
 
 
 
-	R = sum(P_infty) / N
+	R = sum(P_infty[1:]) / N
 	V = 0.5 - R
 
 	file_out = open(relative_path + 'robustness_failure_R_V_' + str(thresh) + '.csv', 'w')

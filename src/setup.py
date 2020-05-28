@@ -18,6 +18,15 @@ codes = np.genfromtxt(in_files.get_codes_file_name())
 # creating resulting folders
 path_res = '../results/' + in_files.get_project_name() + '/'
 
+
+try:
+    os.makedirs('../results/sort_nodes_covid-19')
+except OSError:
+    pass
+else:
+    pass
+
+
 folders = ['metrics', 'robustness']
 
 
