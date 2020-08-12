@@ -11,10 +11,8 @@ python sort_nodes_according_to_covid.py
 
 cd ../robustness
 python network_robustness_failure.py
-python network_robustness_flow_failure_sum_F.py
-python network_robustness_flow_stats_sum_F.py
-python network_robustness_sorted_covid_cases_flow_sum_F.py
 python network_robustness_stats.py
+python network_robustness_sorted_covid.py
 
-cd ../attack_failures
-python plot_R_parcial.py
+cd ../plot
+python plot_R.py
