@@ -2,13 +2,16 @@ BR
 input_data/BR_network.csv
 input_data/BR_network_codes.csv
 
+SP
+input_data/35_state_network.csv
+input_data/35_state_network_codes.csv
+
+
 STATE
 input_data/states_network.csv
 input_data/states_network_codes.csv
 
-SP
-input_data/35_state_network.csv
-input_data/35_state_network_codes.csv
+
 
 
 

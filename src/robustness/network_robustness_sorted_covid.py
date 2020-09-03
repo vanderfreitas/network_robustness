@@ -100,6 +100,8 @@ for ol in range(len(rob_measure_lbls)):
 		dtype = [('label', int), ('stat', int)]
 		data = np.array(data, dtype=dtype)
 
+		print(len(data))
+
 		# robustness method
 		if(ol == 0):
 			number_removed,P_infty = robustness_stats_node(g_original, data)

@@ -163,7 +163,7 @@ for i in range(3):
 	ax[0][i].set_xlim([0,1])
 	ax[0][i].set_ylim([0,None])
 
-	ax[0][i].text(-0.1, 1.1, '('+string.ascii_lowercase[i]+')', transform=ax[0][i].transAxes, size=15, weight='bold')
+	ax[0][i].text(-0.1, 1.1, string.ascii_uppercase[i], transform=ax[0][i].transAxes, size=20, weight='bold')
 
 
 
@@ -174,7 +174,7 @@ for i in range(3):
 	ax[1][i].set_xlim([0,1])
 	ax[1][i].set_ylim([0,1])
 
-	ax[1][i].text(-0.1, 1.1, '('+string.ascii_lowercase[i+3]+')', transform=ax[1][i].transAxes, size=15, weight='bold')
+	ax[1][i].text(-0.1, 1.1, string.ascii_uppercase[i+3], transform=ax[1][i].transAxes, size=20, weight='bold')
 
 
 
@@ -184,7 +184,7 @@ for i in range(3):
 	ax[2][i].set_xlim([0,1])
 	ax[2][i].set_ylim([0,1])
 
-	ax[2][i].text(-0.1, 1.1, '('+string.ascii_lowercase[i+6]+')', transform=ax[2][i].transAxes, size=15, weight='bold')
+	ax[2][i].text(-0.1, 1.1, string.ascii_uppercase[i+6], transform=ax[2][i].transAxes, size=20, weight='bold')
 
 
 plt.tight_layout()

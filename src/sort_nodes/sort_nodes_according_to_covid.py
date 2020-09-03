@@ -33,7 +33,7 @@ file_cities_MG = open(relative_path + 'sorted_covid_cases_by_cities_MG.csv', 'w'
 file_cases_per_day = open(relative_path + 'cases_per_day.csv', 'w')
 
 
-data = pd.read_csv('../../input_data/cases-brazil-cities-time_till_Ago10th_2020.csv', delimiter=',')
+data = pd.read_csv('../../input_data/cases-brazil-cities-time_till_Sept_2nd_2020.csv', delimiter=',')
 data_ = data.to_numpy()
 
 
